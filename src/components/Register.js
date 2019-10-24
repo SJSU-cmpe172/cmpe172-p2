@@ -8,12 +8,39 @@ class Register extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      password: "",
+      staffUsername: "",
+      staffPassword: "",
       privilege: "",
       errors: {}
     };
-    /*
+
+    this.onSubmitStaff = this.onSubmitStaff.bind(this);
+    this.onSubmitCustomer = this.onSubmitCustomer.bind(this);
+  }
+
+  onSubmitStaff(userN, pw, priv) {
+    const newStaff = {
+      username: userN,
+      password: pw,
+      privilege: priv
+    };
+    registerStaff(newStaff).then(res => {
+      this.props.history.push("/login");
+    });
+  }
+
+  onSubmitCustomer(userN, pw) {
+    const newCust = {
+      username: userN,
+      password: pw
+    };
+
+    registerStaff(newCust).then(res => {
+      this.props.history.push("/login");
+    });
+  }
+
+  /*
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -36,20 +63,18 @@ class Register extends Component {
       this.props.history.push("/login");
     });
     */
-  }
 
   render() {
     return (
       <SplitPane defaultSize="50%">
         <div className="container">
-          <RegStaff />
+          <RegStaff subStaff={this.onSubmitStaff} />
         </div>
         <div className="container">
-          <RegCustomer />
+          <RegCustomer subCust={this.onSubmitCustomer} />
         </div>
       </SplitPane>
     );
   }
 }
-
 export default Register;

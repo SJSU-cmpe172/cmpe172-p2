@@ -18,22 +18,10 @@ class RegStaff extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+
   onSubmit(e) {
     e.preventDefault();
     console.log("pressed submit");
-
-    const newUser = {
-      username: this.state.username,
-      password: this.state.password,
-      privilege: this.state.privilege
-    };
-    console.log(newUser);
-
-    console.log(this.props);
-
-    registerStaff(newUser).then(res => {
-      this.props.history.push("/login");
-    });
   }
 
   render() {
@@ -77,7 +65,11 @@ class RegStaff extends Component {
                 />
               </div>
               <button
-                onClick={this.onSubmit}
+                onClick={this.props.subStaff(
+                  this.state.username,
+                  this.state.password,
+                  this.state.privilege
+                )}
                 className="btn btn-lg btn-primary btn-block"
               >
                 Register!

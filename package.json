@@ -1,0 +1,59 @@
+{
+  "name": "cs157a-32",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
+    "autosuggest-highlight": "^3.1.1",
+    "axios": "^0.19.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "concurrently": "^4.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
+    "material-ui": "^0.20.2",
+    "mysql": "^2.17.1",
+    "mysql2": "^1.7.0",
+    "react": "^16.9.0",
+    "react-autosuggest": "^9.4.3",
+    "react-bootstrap": "^1.0.0-beta.14",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "3.1.1",
+    "react-split-pane": "^0.1.87",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^5.19.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "cd src\\server && nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm start\""
+  },
+  "proxy": "http://localhost:5000",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}

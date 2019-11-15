@@ -1,22 +1,22 @@
+// This is a food service page for hotel clients.
+// User gets here from homepage by selecting a food service
 import React, { Component } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
-import { Card, CardHeader , CardMedia, CardContent, CardActions, 
-  Grid, Row, Column,
+import { 
+  Box, Button,
+  Card, CardHeader , CardMedia, CardContent, CardActions, 
+  Divider,
+  Grid,
+  List, ListItem,
   Container, Collapse, Avatar, IconButton, Typography, red
 } from '@material-ui/core';
 import { 
-  FavoriteIcon, ShoppingCart, ExpandMoreIcon, MoreVertIcon
+  FavoriteIcon, ShoppingCart, Delete
 } from '@material-ui/icons'; 
-import { async } from "q";
+const axios = require('axios');
 
-const imgs = {
-  default:    require("../images/test.jpg"),
-  img_burger: require("../images/test.jpg"),
-  img_salad:  require("../images/salad.jpg"),
-  img_coke:   require("../images/coke.jpg"),
-  img_fries:  require("../images/fries.jpg"),
-}
+const deft_img = "https://i.imgur.com/DOTJi6h.jpg";
 
 const HOST = 'http://localhost:5000/api/food/'
 async function post (addr, data) {
@@ -41,32 +41,70 @@ class Food extends Component {
   constructor() {
     super();
     this.state = {
-      menu: [ {
-        name: "testDish",
-        desc: "Teasty dish. Prepeared with care and effort.",
-        price: 10.0,
-        image: imgs.default,
-      } ]
+      menu: [ ],
+      cartPrice: 0,
     };
   }
   componentDidMount = async () => {
     let res = await get('menu');
     console.log(res);
     this.setState( { menu: res.map( (r) => {
-      let img = null;
-      if ( r.itemUrl in imgs ) { img=imgs[r.itemUrl] } else { img=imgs.default }
-      console.log(img);
       return {
         name: r.itemName, 
         desc: r.itemDescr, 
         price: r.itemPrice, 
-        image: img }
+        image: r.itemUrl,
+        count: 0 }
       })} );
   } 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  foodCard( name, description, price, image ) {
+  makeJob() {
+    const jobId = Date.now();
+    axios.post("/api/jobs/create", {
+      id:               jobId,
+      room: this.state.roomID,
+      type:            "food",
+      status:               0,
+      dtCreated:   Date.now(),
+      dtWorked:             0,
+      dtCompleted:      false,
+      staff:             null,
+      //job specific
+      items: this.state.cart.map( (f) => {return { foodID: f.name, count: f.count }} ),
+      dtPickup:    null,    //shuttle
+      destination: null,    //shuttle
+      ticketNo:    null     //valet
+    });
+  }
+  addToCart( food ) {
+    const new_food = Object.assign(food, {count: food.count+1});
+    const new_menu = this.state.menu.map( (o) => {if (o.name!==food.name) return o; else return new_food} );
+    this.setState( {menu: new_menu} );
+  }
+  removeFromCart( food ) {
+    let new_menu = this.state.menu.map((o) => {
+      if (o.name===food.name) return { name:food.name, desc:food.desc, price:food.price, image:food.image, count:food.count-1 };
+      else return o;
+    });
+    this.setState( {menu: new_menu } );
+  }
+  cartCard( food ) {
+    if ( food.count > 0) {
+      return(
+        <ListItem>
+          <Typography variant="body2" color="textSecondary" component="p"> { food.name+` x${food.count} ` } </Typography>
+          <Typography variant="body2" color="textSecondary" component="p" > { "$"+(food.count*food.price).toFixed(2) } </Typography>
+          <IconButton aria-label="add to cart">
+            <Delete onClick={ () => { this.removeFromCart(food) } }/>
+          </IconButton>
+        </ListItem>
+      )
+    }
+    else { return null}
+  }
+  foodCard( {name,desc,price,image,count} ) {
     return (
       <Card style={ {maxWidth: "275px", margin: "5px"} }>
         <CardHeader
@@ -74,10 +112,10 @@ class Food extends Component {
         />
         <img src={ image } style={{height:'185px', width: "275px"}}/>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p"> { description } </Typography>
+          <Typography variant="body2" color="textSecondary" component="p"> { desc } </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to cart">
+          <IconButton aria-label="add to cart" onClick={ () => this.addToCart({name,desc,price,image,count}) }>
             <ShoppingCart />
           </IconButton>
           <Typography variant="body2" color="textSecondary" component="p" > { "$"+price.toFixed(2) } </Typography>
@@ -87,9 +125,29 @@ class Food extends Component {
   }
   render() {
     return (
-      <div>
-        <div style={{ display:"flex", flexFlow: "row wrap" }}>{ this.state.menu.map( (o) => this.foodCard(o.name, o.desc, o.price, o.image ) ) }</div>
-      </div>
+      <Container style={{ display:"flex" }}>  
+        <Grid direction='column' xs={10} style={{ display:"flex", flexFlow: "row wrap" }}>
+          { this.state.menu.map( (o) => this.foodCard(o) ) }
+        </Grid>
+        <Grid direction='column' xs={2} style={{ display:"flex", flexFlow: "row wrap", position: "relative"}}>
+          <Card style={ {margin: "5px", minWidth:"200px"} }>
+            <List >
+              <ListItem>
+                <Typography variant="body2" color="textSecondary" component="p"> { "Cart" } </Typography>
+              </ListItem>
+            </List>
+            <Divider />
+            <List >
+              { this.state.menu.map( (o) => this.cartCard(o) ) }
+            </List>
+            <Divider />
+            <CardActions disableSpacing style={{ position: "absolute", bottom: "10px" }}>
+              { "Total: $"+(this.state.menu.reduce( (a, b) => { if (b.count>0) return a+b.price*b.count; else return a; }, 0 )).toFixed(2) }
+              <Button>{ "Order" }</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+      </Container>
     );
   }
 }

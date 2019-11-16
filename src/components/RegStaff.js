@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { registerStaff } from "./Userfunctions";
 
 class RegStaff extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       password: "",
@@ -11,20 +12,22 @@ class RegStaff extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.onSubmitStaff = this.onSubmitStaff.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  onClick(e) {
+  onSubmitStaff(e) {
     e.preventDefault();
-    this.props.subStaff(
-      this.state.username,
-      this.state.password,
-      this.state.privilege
-    );
+    const newStaff = {
+      username: this.state.username,
+      password: this.state.password,
+      privilege: this.state.privilege
+    };
+    if(registerStaff(newStaff))
+      this.props.close();
   }
 
   render() {
@@ -68,7 +71,7 @@ class RegStaff extends Component {
                 />
               </div>
               <button
-                onClick={this.onClick}
+                onClick={this.onSubmitStaff}
                 className="btn btn-lg btn-primary btn-block"
               >
                 Register!

@@ -9,6 +9,7 @@ export const registerStaff = newStaff => {
     })
     .then(response => {
       console.log(response);
+      return response;
     })
     .catch(err => {
       console.log(err);
@@ -35,7 +36,6 @@ export const loadStaff = () => {
   return axios
     .get("/api/users/allStaff")
     .then(res => {
-      console.log(res.data);
       const staff = res.data.Item.staff;
       return staff;
     })

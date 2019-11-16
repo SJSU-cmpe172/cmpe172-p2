@@ -37,7 +37,7 @@ export const loadStaff = () => {
     .then(res => {
       console.log(res.data);
       const staff = res.data.Item.staff;
-      return items;
+      return staff;
     })
     .catch(err => console.log(err));
 };

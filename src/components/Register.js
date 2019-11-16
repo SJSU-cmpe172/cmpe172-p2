@@ -34,7 +34,6 @@ class Register extends Component {
       username: userN,
       password: pw
     };
-
     registerStaff(newCust).then(res => {
       this.props.history.push("/login");
     });

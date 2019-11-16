@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.css";
 
@@ -11,6 +11,7 @@ import Profile from "./components/Profile";
 import Services from "./components/Services";
 import RegCustomer from "./components/RegCustomer";
 import RegStaff from "./components/RegStaff";
+import Amenities from "./components/Amenities";
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/services" component={Services} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/amenities" component={Amenities} />
           </div>
         </div>
       </Router>

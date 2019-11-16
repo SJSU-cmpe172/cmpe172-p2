@@ -96,8 +96,8 @@ class Food extends Component {
         <ListItem>
           <Typography variant="body2" color="textSecondary" component="p"> { food.name+` x${food.count} ` } </Typography>
           <Typography variant="body2" color="textSecondary" component="p" > { "$"+(food.count*food.price).toFixed(2) } </Typography>
-          <IconButton aria-label="add to cart">
-            <Delete onClick={ () => { this.removeFromCart(food) } }/>
+          <IconButton aria-label="add to cart" onClick={ () => this.removeFromCart(food) }>
+            <Delete />
           </IconButton>
         </ListItem>
       )

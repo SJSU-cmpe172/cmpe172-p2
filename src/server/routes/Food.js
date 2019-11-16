@@ -32,15 +32,4 @@ food.get("/menu", (req, res) => {
   });
 });
 
-food.post("/login", (req, res) => {
-  
-});
-
-food.get("/profile", (req, res) => {
-  var decoded = jwt.verify(
-    req.headers["authorization"],
-    process.env.SECRET_KEY
-  );
-});
-
 module.exports = food;

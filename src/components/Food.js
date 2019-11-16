@@ -5,14 +5,15 @@ import jwt_decode from "jwt-decode";
 import { 
   Button,
   Card, CardHeader, CardContent, CardActions, 
-  Divider,
-  Grid,
-  List, ListItem,
-  Container, Avatar, IconButton, Typography
+  Container, Grid,
+  List, ListItem, Divider,
+  Snackbar,
+  Avatar, IconButton, Typography
 } from '@material-ui/core';
 import { 
-  FavoriteIcon, ShoppingCart, Delete
+  FavoriteIcon, ShoppingCart, Delete, Close
 } from '@material-ui/icons'; 
+import { createJob } from './JobFunctions';
 const axios = require('axios');
 
 const deft_img = "https://i.imgur.com/DOTJi6h.jpg";
@@ -40,9 +41,11 @@ class Food extends Component {
   constructor() {
     super();
     this.state = {
-      menu: [ ],
-      cartPrice: 0,
-      room: "",
+      menu:            [],
+      cartPrice:        0,
+      room:            "",
+      confirmSnack: false,
+      cancel:       false,
     };
   }
   componentDidMount = async () => {
@@ -61,29 +64,27 @@ class Food extends Component {
           image: r.itemUrl,
           count: 0 }
         }),
-      room: storage.room,
+      room: storage.roomNum,
     });
+    console.log(this.cartIsEmpty());
   } 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
-  }
   makeJob() {
-    const jobId = Date.now();
-    axios.post("/api/jobs/create", {
-      id:               jobId,
-      room: this.state.roomID,
-      type:            "food",
-      status:               0,
-      dtCreated:   Date.now(),
-      dtWorked:             0,
-      dtCompleted:      false,
-      staff:             null,
-      //job specific
-      items: this.state.cart.map( (f) => {return { foodID: f.name, count: f.count }} ),
-      dtPickup:    null,    //shuttle
-      destination: null,    //shuttle
-      ticketNo:    null     //valet
-    });
+    this.setState({ confirmSnack: true, menu: this.state.menu.map( (o)=>{return Object.assign(o, {count: 0})} ) });  // Clear the cart
+    // Give user some time to cancel
+    setTimeout( ()=>{
+      if (!this.state.cancel) {
+        const id = Date.now();
+        createJob({
+          id:                id,
+          room: this.state.room,
+          type:          "food",
+          //job specific
+          items: this.state.menu.filter( (f) => { if (f.count>0) return { foodID: f.name, count: f.count }} ),
+        });
+      }
+      else { console.log('canceled'); this.setState({cancel: false}) }
+      this.setState( { confirmSnack: false } )
+    }, 4000 );
   }
   addToCart( food ) {
     const new_food = Object.assign(food, {count: food.count+1});
@@ -96,6 +97,9 @@ class Food extends Component {
       else return o;
     });
     this.setState( {menu: new_menu } );
+  }
+  cartIsEmpty() {
+    return !this.state.menu.reduce( (m,n) => { return ( n.count > 0 || m ) }, false ); 
   }
   cartCard( food ) {
     if ( food.count > 0) {
@@ -130,10 +134,41 @@ class Food extends Component {
       </Card>
     );
   }
+  confirmOrderSnack() {
+    return (
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        open={ this.state.confirmSnack }
+        onClose={ (e) => { this.setState( { confirmSnack: false } ) } }
+        ContentProps={{
+          'aria-describedby': 'message-id',
+        }}
+        style={{maxWidth: 600}}
+        message={<span id="message-id">Your order is being processed!</span>}
+        action={[
+          <Button key="undo" color="secondary" size="small" onClick={ (e) => this.setState({ cancel: true, confirmSnack: false }) }>
+            CANCEL
+          </Button>,
+          <IconButton
+            key="close"
+            aria-label="close"
+            color="inherit"
+            onClick={ (e) => {this.setState({confirmSnack: false})} }
+          >
+            <Close />
+          </IconButton>,
+        ]}
+      />
+    )
+  }
   render() {
     return (
-      <Container style={{ display:"flex" }}>  
+      <Container style={{ display:"flex" }}>
         <Grid direction='column' xs={10} style={{ display:"flex", flexFlow: "row wrap" }}>
+          { this.confirmOrderSnack() }
           { this.state.menu.map( (o) => this.foodCard(o) ) }
         </Grid>
         <Grid direction='column' xs={2} style={{ display:"flex", flexFlow: "row wrap", position: "relative"}}>
@@ -150,7 +185,10 @@ class Food extends Component {
             <Divider />
             <CardActions disableSpacing style={{ position: "absolute", bottom: "10px" }}>
               { "Total: $"+(this.state.menu.reduce( (a, b) => { if (b.count>0) return a+b.price*b.count; else return a; }, 0 )).toFixed(2) }
-              <Button>{ "Order" }</Button>
+              {/* Disable order button if no items are added to cart */}
+              <Button 
+                disabled={ this.cartIsEmpty() } 
+                onClick={ () => this.makeJob() }>{ "Order" }</Button>
             </CardActions>
           </Card>
         </Grid>

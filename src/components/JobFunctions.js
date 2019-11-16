@@ -8,24 +8,24 @@ export const getJobs = () => {
 
 export const createJob = jobObj => {
   const jobId = Date.now();
-  axios
-    .post("/api/jobs/create", {
-      id: jobId,
-      room: jobObj.room,
-      type: jobObj.type,
-      status: jobObj.status,
-      dtCreated: jobObj.dtCreated,
-      dtWorked: jobObj.dtWorked,
-      dtCompleted: jobObj.dtCompleted,
-      staff: jobObj.staff,
+  const tempObj = {
+    id: jobId,
+    room: "-1",
+    type: "-1",
+    status: "new",
+    dtCreated: Date.now(),
+    dtWorked: "-1",
+    dtCompleted: "-1",
+    staff: "-1",
+    items: "-1",
+    dtPickup: "-1",
+    destination: "-1",
+    ticketNo: -1
+  };
 
-      //job specific
-      items: jobObj.items, //can be used for amenties or food
-      dtPickup: jobObj.dtPickup, //shuttle
-      destination: jobObj.destination, //shuttle
-      ticketNo: jobObj.ticketNo //valet
-    })
-    .then(response => {
-      console.log(response);
-    });
+  const finalJob = Object.assign(tempObj, jobObj);
+
+  axios.post("/api/jobs/create", finalJob).then(response => {
+    console.log(response);
+  });
 };

@@ -30,3 +30,14 @@ export const loginStaff = staff => {
       console.log(err);
     });
 };
+
+export const loadStaff = () => {
+  return axios
+    .get("/api/users/allStaff")
+    .then(res => {
+      console.log(res.data);
+      const staff = res.data.Item.staff;
+      return items;
+    })
+    .catch(err => console.log(err));
+};

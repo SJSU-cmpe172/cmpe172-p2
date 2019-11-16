@@ -1,5 +1,5 @@
-# CS157A-32
-Database Design Project
+# CMPE 172
+A web based app that provides hotel management a platform to serve in room requests from guests and track employee metrics on serving these requests, all in real time.
 
 #### Running instructions:
 1. Clone repo
@@ -7,14 +7,7 @@ Database Design Project
 3. Run 'npm run dev' to start both react and server app.
 
 
-## Project Proposal:
-Project Overview - Chris Douglas
+added
 
-System Environment - Lance Ngo
-
-Functional Requirements - Sandro Sallenbach
-
-
-## Project Requirements Homework:
-
-https://github.com/CS157A-32/CS157A-32/blob/master/Project-Requirements.md
+#### Code Usage:
+- Adapted login/authentication from https://github.com/ArjunAranetaCodes/MoreCodes-Youtube/tree/master/mern-mysql-login-reg

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { registerStaff } from "./Userfunctions";
 
 class RegStaff extends Component {
   constructor() {
@@ -12,16 +11,20 @@ class RegStaff extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  onSubmit(e) {
+  onClick(e) {
     e.preventDefault();
-    console.log("pressed submit");
+    this.props.subStaff(
+      this.state.username,
+      this.state.password,
+      this.state.privilege
+    );
   }
 
   render() {
@@ -29,7 +32,7 @@ class RegStaff extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6 mt-5 mx-auto">
-            <form noValidate onSubmit={this.onSubmit}>
+            <form noValidate>
               <h1 className="h3 mb-3 font-weight-normal">Register Staff</h1>
               <div className="form-group">
                 <label htmlFor="username">Username</label>
@@ -65,11 +68,7 @@ class RegStaff extends Component {
                 />
               </div>
               <button
-                onClick={this.props.subStaff(
-                  this.state.username,
-                  this.state.password,
-                  this.state.privilege
-                )}
+                onClick={this.onClick}
                 className="btn btn-lg btn-primary btn-block"
               >
                 Register!

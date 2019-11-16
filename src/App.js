@@ -12,6 +12,7 @@ import Services from "./components/Services";
 import RegCustomer from "./components/RegCustomer";
 import RegStaff from "./components/RegStaff";
 import Amenities from "./components/Amenities";
+import Food from "./components/Food";
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
             <Route exact path="/services" component={Services} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/amenities" component={Amenities} />
+            <Route exact path="/food" component={Food} />
           </div>
         </div>
       </Router>

@@ -6,6 +6,26 @@ export const getJobs = () => {
   });
 };
 
+export const getNewJobs = staffName => {
+  axios
+    .get("api/jobs/getNewJobs", {
+      params: { staff: staffName }
+    })
+    .then(res => {
+      return res.data.Item.jobs;
+    });
+};
+
+export const getMyJobs = staffName => {
+  axios
+    .get("api/jobs/getMyJobs", {
+      params: { staff: staffName }
+    })
+    .then(res => {
+      return res.data.Item.jobs;
+    });
+};
+
 export const createJob = jobObj => {
   const jobId = Date.now();
   const tempObj = {

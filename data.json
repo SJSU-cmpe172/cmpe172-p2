@@ -70,6 +70,74 @@
               }
             ]
           },
+          "food": {
+            "L": [
+              {
+                "M": {
+                  "itemName": {
+                    "S": "Burger"
+                  },
+                  "itemUrl": {
+                    "S": "https://i.imgur.com/29k1epX.jpg"
+                  },
+                  "itemDescr": {
+                    "S": "Teasty Meal description 1"
+                  },
+                  "itemPrice": {
+                    "N": "7.95"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "Salad"
+                  },
+                  "itemUrl": {
+                    "S": "https://i.imgur.com/hcAHA7Y.jpg"
+                  },
+                  "itemDescr": {
+                    "S": "Teasty Meal description 2"
+                  },
+                  "itemPrice": {
+                    "N": "8.95"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "Coke"
+                  },
+                  "itemUrl": {
+                    "S": "https://i.imgur.com/XgNlw5D.jpg"
+                  },
+                  "itemDescr": {
+                    "S": "Teasty Meal description 3"
+                  },
+                  "itemPrice": {
+                    "N": "2.95"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "fries"
+                  },
+                  "itemUrl": {
+                    "S": "https://i.imgur.com/DOTJi6h.jpg"
+                  },
+                  "itemDescr": {
+                    "S": "Teasty Meal description 4"
+                  },
+                  "itemPrice": {
+                    "N": "2.95"
+                  }
+                }
+              }
+            ]
+          },
           "rooms": {
             "L": [
               {
@@ -146,6 +214,49 @@
                   },
                   "type": {
                     "S": "amenities"
+                  }
+                }
+              }
+            ]
+          },
+          "destinations": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "San Francisco International Airport"
+                  },
+                  "address": {
+                    "S": "San Francisco, CA 94128"
+                  },
+                  "code": {
+                    "S": "SFO"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "Norman Y. Mineta San Jose International Airport"
+                  },
+                  "address": {
+                    "S": "1701 Airport Blvd, San Jose, CA 95110"
+                  },
+                  "code": {
+                    "S": "SJC"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "Oakland International Airport"
+                  },
+                  "address": {
+                    "S": "1 Airport Dr, Oakland, CA 94621"
+                  },
+                  "code": {
+                    "S": "OAK"
                   }
                 }
               }

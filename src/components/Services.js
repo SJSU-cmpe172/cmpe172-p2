@@ -1,8 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
+
+import { 
+  ButtonBase,
+  Grid,
+  Container, Typography, 
+  Paper
+} from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,13 +22,37 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+function fancy(){
+  return (
+   <Container style={{padding: "0px", margin: "0px", width: "100%"}}>
+        <ButtonBase
+          focusRipple
+          key={"food"}
+          className={"name"}
+          style={{
+            width: "100%",
+          }}
+          href="/food"
+        >
+          <img src={ "https://i.imgur.com/PrMCLUh.jpg" } style={{height:'200px', width: "100%"}}/>
+          <span style={{backgroundColor: "#000000", opacity: 0.4,}}/>
+          <Typography
+            component="span"
+            variant="h1"
+            color="inherit"
+            style={{position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: "#FFFFFF",}}
+          >
+            {"Buffet"}
+          </Typography>
+        </ButtonBase>
+      </Container>
+  )
+}
+
 export default function SpacingGrid() {
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
-
-  const handleChange = event => {
-    setSpacing(Number(event.target.value));
-  };
 
   return (
     <Grid
@@ -45,22 +74,22 @@ export default function SpacingGrid() {
           </Grid>
           <Grid item>
             <Paper className={classes.paper}>
-              <Link to="/profile" className="nav-link">
-                Profile
+              <Link to="/food" className="nav-link">
+                Buffet
               </Link>
             </Paper>
           </Grid>
           <Grid item>
             <Paper className={classes.paper}>
-              <Link to="/profile" className="nav-link">
-                Profile
+              <Link to="/valet" className="nav-link">
+                Valet
               </Link>
             </Paper>
           </Grid>
           <Grid item>
             <Paper className={classes.paper}>
-              <Link to="/profile" className="nav-link">
-                Profile
+              <Link to="/shuttle" className="nav-link">
+                Shuttle
               </Link>
             </Paper>
           </Grid>

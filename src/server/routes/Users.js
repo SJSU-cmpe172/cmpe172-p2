@@ -10,7 +10,6 @@ users.use(cors());
 
 process.env.SECRET_KEY = "secret";
 
-/*
 users.post("/register", (req, res) => {
   const today = new Date();
   const userData = {
@@ -20,34 +19,29 @@ users.post("/register", (req, res) => {
     created: today
   };
 
-  User.findOne({
-    where: {
-      username: req.body.username
+  let params = {};
+  params.TableName = "hotel";
+  params.Key = { hotelid: 1 };
+  params.ReturnValues = "UPDATED_NEW";
+  params.UpdateExpression =
+    "set #staff = list_append(if_not_exists(#staff, :empty_list), :staff)";
+  params.ExpressionAttributeNames = {
+    "#staff": "staff"
+  };
+  params.ExpressionAttributeValues = {
+    ":staff": [userData],
+    ":empty_list": []
+  };
+
+  docClient.update(params, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(data);
+      res.send("added staff named " + req.body.username);
     }
-  })
-    .then(user => {
-      if (!user) {
-        bcrypt.hash(req.body.password, 10, (err, hash) => {
-          userData.password = hash;
-          User.create(userData)
-            .then(user => {
-              let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                expiresIn: 1200
-              });
-              res.json({ token: token, status: user.username + "Registered!" });
-            })
-            .catch(err => {
-              res.send("error: " + err);
-            });
-        });
-      } else {
-        res.json({ error: "User already exists" });
-      }
-    })
-    .catch(err => {
-      res.send("error: " + err);
-    });
-}); */
+  });
+});
 
 users.post("/login", (req, res) => {
   let params = {};

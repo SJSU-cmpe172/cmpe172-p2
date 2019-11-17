@@ -23,6 +23,7 @@ export const loginStaff = staff => {
     })
     .then(response => {
       localStorage.setItem("usertoken", response.data);
+      console.log('SUCCESS');
       return response.data;
     })
     .catch(err => {

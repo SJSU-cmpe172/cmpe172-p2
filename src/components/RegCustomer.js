@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { registerStaff } from "./Userfunctions";
 
 class RegCustomer extends Component {
   constructor() {
@@ -12,27 +11,15 @@ class RegCustomer extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  onSubmit(e) {
+  onClick(e) {
     e.preventDefault();
-    console.log("pressed submit");
-
-    const newUser = {
-      username: this.state.username,
-      password: this.state.password,
-      privilege: this.state.privilege
-    };
-    console.log(newUser);
-    console.log(this.props);
-
-    registerStaff(newUser).then(res => {
-      this.props.history.push("/login");
-    });
+    this.props.subCust(this.state.username, this.state.password);
   }
 
   render() {
@@ -40,7 +27,7 @@ class RegCustomer extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6 mt-5 mx-auto">
-            <form noValidate onSubmit={this.onSubmit}>
+            <form noValidate onSubmit>
               <h1 className="h3 mb-3 font-weight-normal">Register Customer</h1>
               <div className="form-group">
                 <label htmlFor="username">Username</label>
@@ -65,7 +52,7 @@ class RegCustomer extends Component {
                 />
               </div>
               <button
-                type="submit"
+                onClick={this.onClick}
                 className="btn btn-lg btn-primary btn-block"
               >
                 Register!

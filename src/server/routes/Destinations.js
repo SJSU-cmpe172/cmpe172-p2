@@ -1,19 +1,19 @@
 const express = require("express");
-const amenities = express.Router();
+const destinations = express.Router();
 const cors = require("cors");
 const docClient = require("../db");
 
 //const config = require("../config");
 
-//const Amenity = require("../models/Amenities");
-amenities.use(cors());
+//const Amenity = require("../models/destinations");
+destinations.use(cors());
 
-amenities.get("/getItems", (req, res) => {
+destinations.get("/getDestinations", (req, res) => {
   //const docClient = new AWS.DynamoDB.DocumentClient();
   let params = {};
   params.TableName = "hotel";
   params.Key = { hotelid: 1 };
-  params.ProjectionExpression = "amenities";
+  params.ProjectionExpression = "destinations";
 
   docClient.get(params, (err, data) => {
     if (err) {
@@ -24,4 +24,4 @@ amenities.get("/getItems", (req, res) => {
   });
 });
 
-module.exports = amenities;
+module.exports = destinations;

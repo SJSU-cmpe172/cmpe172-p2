@@ -1,15 +1,10 @@
-// the index in db is the one that creates the connection, 
+// the index in db is the one that creates the connection,
 // then exports that connection to any other file that wants to use it
 
-const express = require("express");
-const mysql = require("mysql");
 const config = require("../config");
+const AWS = require("aws-sdk");
 
-const Connection = mysql.createConnection(config.mysql);
+AWS.config.update(config.aws_local_config);
+const dynamoDocClient = new AWS.DynamoDB.DocumentClient();
 
-Connection.connect(err => {
-  console.log("db connected from INDEX INDEX");
-  if (err) console.log(err);
-});
-
-module.exports = Connection;
+module.exports = dynamoDocClient;

@@ -81,15 +81,15 @@ export default function SpacingGrid() {
           </Grid>
           <Grid item>
             <Paper className={classes.paper}>
-              <Link to="/profile" className="nav-link">
-                Profile
+              <Link to="/valet" className="nav-link">
+                Valet
               </Link>
             </Paper>
           </Grid>
           <Grid item>
             <Paper className={classes.paper}>
-              <Link to="/profile" className="nav-link">
-                Profile
+              <Link to="/shuttle" className="nav-link">
+                Shuttle
               </Link>
             </Paper>
           </Grid>

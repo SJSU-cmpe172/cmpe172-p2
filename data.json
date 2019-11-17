@@ -1,0 +1,269 @@
+{
+  "hotel": [
+    {
+      "PutRequest": {
+        "Item": {
+          "hotelid": {
+            "N": "1"
+          },
+          "amenities": {
+            "L": [
+              {
+                "M": {
+                  "itemName": {
+                    "S": "bathrobe"
+                  },
+                  "itemUrl": {
+                    "S": "https://www.potterybarn.com/pbimgs/ab/images/dp/wcm/201936/0749/hotel-piped-trim-bath-robe-c.jpg"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "blanket"
+                  },
+                  "itemUrl": {
+                    "S": "https://image.made-in-china.com/2f0j00DdmtUQJIgHoT/70-Wool-30-Acrylic-Hotel-Blanket-Wholesale-Warm-Wool-Blankets.jpg"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "shampoo"
+                  },
+                  "itemUrl": {
+                    "S": "https://i.pinimg.com/originals/af/70/f8/af70f830c6455acb090f1817bc98b21d.jpg"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "soap"
+                  },
+                  "itemUrl": {
+                    "S": "https://www.nathosp.com/images/uploads/royal_leaf_soaps_amenities_main_lrg.jpg"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "toothbrush"
+                  },
+                  "itemUrl": {
+                    "S": "https://shop.r10s.jp/frontier-online/cabinet/ikou_20090520/06-322.jpg"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "towels"
+                  },
+                  "itemUrl": {
+                    "S": "http://www.ahscompany.com/thumbnail.asp?file=assets/images/1888/oasisterry.jpg&maxx=500&maxy=0"
+                  }
+                }
+              }
+            ]
+          },
+          "food": {
+            "L": [
+              {
+                "M": {
+                  "itemName": {
+                    "S": "Burger"
+                  },
+                  "itemUrl": {
+                    "S": "https://i.imgur.com/29k1epX.jpg"
+                  },
+                  "itemDescr": {
+                    "S": "Teasty Meal description 1"
+                  },
+                  "itemPrice": {
+                    "N": "7.95"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "Salad"
+                  },
+                  "itemUrl": {
+                    "S": "https://i.imgur.com/hcAHA7Y.jpg"
+                  },
+                  "itemDescr": {
+                    "S": "Teasty Meal description 2"
+                  },
+                  "itemPrice": {
+                    "N": "8.95"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "Coke"
+                  },
+                  "itemUrl": {
+                    "S": "https://i.imgur.com/XgNlw5D.jpg"
+                  },
+                  "itemDescr": {
+                    "S": "Teasty Meal description 3"
+                  },
+                  "itemPrice": {
+                    "N": "2.95"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "itemName": {
+                    "S": "fries"
+                  },
+                  "itemUrl": {
+                    "S": "https://i.imgur.com/DOTJi6h.jpg"
+                  },
+                  "itemDescr": {
+                    "S": "Teasty Meal description 4"
+                  },
+                  "itemPrice": {
+                    "N": "2.95"
+                  }
+                }
+              }
+            ]
+          },
+          "rooms": {
+            "L": [
+              {
+                "M": {
+                  "roomNum": {
+                    "S": "room202"
+                  },
+                  "password": {
+                    "S": "$2b$10$0rMZLcGPdLyTVM6Dq5Jlk.00A2y0txcahj2dBdjRQmJjwHvOuWT8C"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "roomNum": {
+                    "S": "room302"
+                  },
+                  "password": {
+                    "S": "$2b$10$WlQmNkfGyaTfKEt8B9i3gu835xfFJ9F6PzUDIj7eGUIiAWM6bjmq2"
+                  }
+                }
+              }
+            ]
+          },
+          "staff": {
+            "L": [
+              {
+                "M": {
+                  "idNum": {
+                    "S": "12345"
+                  },
+                  "password": {
+                    "S": "$2b$10$.Lt5pP93C5ow1/tYpXGcQezYWRwszXOY65qT.bypZ6hS.hh1vG.c6"
+                  },
+                  "privilege": {
+                    "S": "amenities"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "idNum": {
+                    "S": "12346"
+                  },
+                  "password": {
+                    "S": "$2b$10$mI7W4X9H4S0F5Drc3/t5vOYuyKc8nRVc5Ypcxk86zVMOZrh31/5Le"
+                  },
+                  "privilege": {
+                    "S": "valet"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "idNum": {
+                    "S": "12347"
+                  },
+                  "password": {
+                    "S": "$2b$10$k70YwLjIhwiHr9yd30b.u.uujcGfMRdgjQYHCfBIQ5LvCU4W/RpDa"
+                  },
+                  "privilege": {
+                    "S": "roomservice"
+                  }
+                }
+              }
+            ]
+          },
+          "jobs": {
+            "L": [
+              {
+                "M": {
+                  "jobId": {
+                    "S": "55555"
+                  },
+                  "type": {
+                    "S": "amenities"
+                  }
+                }
+              }
+            ]
+          },
+          "destinations": {
+            "L": [
+              {
+                "M": {
+                  "name": {
+                    "S": "San Francisco International Airport"
+                  },
+                  "address": {
+                    "S": "San Francisco, CA 94128"
+                  },
+                  "code": {
+                    "S": "SFO"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "Norman Y. Mineta San Jose International Airport"
+                  },
+                  "address": {
+                    "S": "1701 Airport Blvd, San Jose, CA 95110"
+                  },
+                  "code": {
+                    "S": "SJC"
+                  }
+                }
+              },
+              {
+                "M": {
+                  "name": {
+                    "S": "Oakland International Airport"
+                  },
+                  "address": {
+                    "S": "1 Airport Dr, Oakland, CA 94621"
+                  },
+                  "code": {
+                    "S": "OAK"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

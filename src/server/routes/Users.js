@@ -2,7 +2,7 @@ const express = require("express");
 const users = express.Router();
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const docClient = require("../db");
 
 //const User = require("../models/Users");
@@ -45,7 +45,7 @@ users.post("/register", (req, res) => {
 
 users.post("/login", (req, res) => {
   let params = {};
-  params.TableName = "hotel";
+  params.TableName = "hotel_test";
   params.Key = { hotelid: 1 };
   params.ProjectionExpression = "rooms";
 

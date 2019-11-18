@@ -8,15 +8,12 @@ import {
   Container, Grid,
   List, ListItem, Divider,
   Snackbar,
-  Avatar, IconButton, Typography
+  IconButton, Typography
 } from '@material-ui/core';
 import { 
   FavoriteIcon, ShoppingCart, Delete, Close
 } from '@material-ui/icons'; 
 import { createJob } from './JobFunctions';
-const axios = require('axios');
-
-const deft_img = "https://i.imgur.com/DOTJi6h.jpg";
 
 const HOST = 'http://localhost:5000/api/food/'
 async function post (addr, data) {

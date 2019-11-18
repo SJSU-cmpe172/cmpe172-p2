@@ -1,4 +1,5 @@
 #!/bin/bash
 cd /home/ec2-user/node-website
 export PORT=80
-forever concurrently \"npm run server\" \"npm start\"
+forever serve -s build -p 80
+forever node src/server/server.js

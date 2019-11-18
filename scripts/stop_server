@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "stoped server. Jk"
+echo "stoped server"
+forever stopall

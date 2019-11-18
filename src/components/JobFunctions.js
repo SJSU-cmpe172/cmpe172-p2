@@ -6,14 +6,10 @@ export const getJobs = () => {
   });
 };
 
-export const getNewJobs = staffName => {
-  axios
-    .get("api/jobs/getNewJobs", {
-      params: { staff: staffName }
-    })
-    .then(res => {
-      return res.data.Item.jobs;
-    });
+export const getNewJobs = () => {
+  axios.get("api/jobs/getNewJobs").then(res => {
+    return res.data.Item.jobs;
+  });
 };
 
 export const getMyJobs = staffName => {
@@ -23,6 +19,14 @@ export const getMyJobs = staffName => {
     })
     .then(res => {
       return res.data.Item.jobs;
+    });
+};
+
+export const workJob = (jobId, staffName) => {
+  axios
+    .post("api/jobs/workJob", { jobId: jobId, staff: staffName })
+    .then(response => {
+      console.log(response);
     });
 };
 

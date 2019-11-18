@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import SplitPane from "react-split-pane";
+import jwt_decode from "jwt-decode";
+
+import { getMyJobs } from "./JobFunctions";
+import { getNewJobs } from "./JobFunctions";
 
 class StaffJobs extends Component {
   constructor() {
@@ -7,28 +11,41 @@ class StaffJobs extends Component {
     this.state = {
       newJobs: [],
       staffJobs: [],
-      staffName: "",
+      staffId: "",
       privilege: ""
     };
   }
 
   async componentDidMount() {
+    const token = localStorage.usertoken;
+    const decoded = jwt_decode(token);
+
     let newJobs;
-    await loadItems().then(res => {
-      items = res;
-      console.log(items);
+    await getNewJobs().then(res => {
+      newJobs = res;
+    });
+
+    let myJobs;
+    await getMyJobs(decoded.username).then(res => {
+      myJobs = res;
     });
     this.setState({
-      itemList: items
+      staffId: decoded.staffId,
+      privilege: decoded.privilege,
+      newJobs: newJobs,
+      staffJobs: myJobs
     });
-    console.log(this.state.itemList[0].itemName);
   }
 
   render() {
     return (
       <SplitPane defaultSize="50%">
         <div className="container">
-          <ul></ul>
+          <ul>
+            {this.state.newJobs.map((job, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </div>
         <div className="container">
           <RegCustomer subCust={this.onSubmitCustomer} />

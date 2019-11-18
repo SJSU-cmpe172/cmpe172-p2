@@ -4,7 +4,7 @@
 const config = require("../config");
 const AWS = require("aws-sdk");
 
-AWS.config.update(config.aws_remote_config);
+AWS.config.update(config);
 const dynamoDocClient = new AWS.DynamoDB.DocumentClient();
 console.log(dynamoDocClient);
 

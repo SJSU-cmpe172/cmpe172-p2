@@ -13,6 +13,7 @@ import Food from "./components/Food";
 import ShuttleJob from "./components/Shuttle";
 import ValetJob from "./components/Valet";
 import StaffJobs from "./components/StaffJobs";
+import AdminPage from "./components/AdminPage";
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
             <Route exact path="/shuttle" component={ShuttleJob} />
             <Route exact path="/valet" component={ValetJob} />
             <Route exact path="/staffJobs" component={StaffJobs} />
+            <Route exact path="/admin" component={AdminPage} />
           </div>
         </div>
       </Router>

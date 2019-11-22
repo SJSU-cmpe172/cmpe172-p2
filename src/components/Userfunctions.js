@@ -4,11 +4,13 @@ export const registerStaff = newStaff => {
   return axios
     .post("/api/users/register", {
       username: newStaff.username,
+      name: newStaff.name,
       password: newStaff.password,
       privilege: newStaff.privilege
     })
     .then(response => {
       console.log(response);
+      return response;
     })
     .catch(err => {
       console.log(err);
@@ -48,4 +50,14 @@ export const loginStaff = staff => {
     .catch(err => {
       console.log(err);
     });
+};
+
+export const loadStaff = () => {
+  return axios
+    .get("/api/users/allStaff")
+    .then(res => {
+      const staff = res.data.Item.staff;
+      return staff;
+    })
+    .catch(err => console.log(err));
 };

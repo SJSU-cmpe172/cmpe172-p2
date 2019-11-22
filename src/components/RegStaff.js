@@ -1,30 +1,35 @@
 import React, { Component } from "react";
+import { registerStaff } from "./Userfunctions";
 
 class RegStaff extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
+      name: "",
       password: "",
       privilege: "",
       errors: {}
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.onSubmitStaff = this.onSubmitStaff.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  onClick(e) {
+  onSubmitStaff(e) {
     e.preventDefault();
-    this.props.subStaff(
-      this.state.username,
-      this.state.password,
-      this.state.privilege
-    );
+    const newStaff = {
+      username: this.state.username,
+      name: this.state.name,
+      password: this.state.password,
+      privilege: this.state.privilege
+    };
+    if(registerStaff(newStaff))
+      this.props.close();
   }
 
   render() {
@@ -35,24 +40,24 @@ class RegStaff extends Component {
             <form noValidate>
               <h1 className="h3 mb-3 font-weight-normal">Register Staff</h1>
               <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">ID#</label>
                 <input
                   type="text"
                   className="form-control"
                   name="username"
-                  placeholder="Enter username"
+                  placeholder="Enter ID"
                   value={this.state.username}
                   onChange={this.onChange}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="name">Employee Name</label>
                 <input
-                  type="password"
+                  type="name"
                   className="form-control"
-                  name="password"
-                  placeholder="Enter password"
-                  value={this.state.password}
+                  name="name"
+                  placeholder="Enter Name"
+                  value={this.state.name}
                   onChange={this.onChange}
                 />
               </div>
@@ -67,8 +72,19 @@ class RegStaff extends Component {
                   onChange={this.onChange}
                 />
               </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  placeholder="Enter password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                />
+              </div>
               <button
-                onClick={this.onClick}
+                onClick={this.onSubmitStaff}
                 className="btn btn-lg btn-primary btn-block"
               >
                 Register!

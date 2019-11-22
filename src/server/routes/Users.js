@@ -9,10 +9,13 @@ users.use(cors());
 
 process.env.SECRET_KEY = "secret";
 
+//REGISTER
 users.post("/register", (req, res) => {
   const today = new Date();
-  let userData = {
-    idNum: req.body.username,
+  const userData = {
+    username: req.body.username,
+    name: req.body.name,
+    password: req.body.password,
     privilege: req.body.privilege,
     created: today
   };
@@ -87,6 +90,7 @@ users.post("/register", (req, res) => {
   });
   */
 
+//LOGIN
 users.post("/login", (req, res) => {
   let params = {};
   params.TableName = "hotel";
@@ -165,6 +169,21 @@ users.post("/staffLogin", (req, res) => {
           break;
         }
       }
+    }
+  });
+});
+
+users.get("/allStaff", (req, res) => {
+  let params = {};
+  params.TableName = "hotel";
+  params.Key = { hotelid: 1 };
+  params.ProjectionExpression = "staff";
+
+  docClient.get(params, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(data);
     }
   });
 });

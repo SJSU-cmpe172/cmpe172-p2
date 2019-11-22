@@ -101,9 +101,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Dashboard(props) {
-  console.log(props)
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   return (
     <div className={classes.root}>
@@ -113,7 +111,7 @@ export default function Dashboard(props) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Admin Console
           </Typography>
-          <Button color="inherit">
+          <Button color="inherit" onClick={props.logout}>
             Logout
           </Button>
         </Toolbar>
@@ -135,9 +133,9 @@ export default function Dashboard(props) {
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
                 <JobList 
-                  available={props.availableJobs}
-                  inProgress={props.inProgressJobs}
-                  completed={props.completedJobs}
+                  newJobs={props.newJobs}
+                  workingJobs={props.workingJobs}
+                  completedJobs={props.completedJobs}
                 />
               </Paper>
             </Grid>
@@ -146,8 +144,8 @@ export default function Dashboard(props) {
               <Paper className={classes.paper}>
                 <EmployeeList 
                   staff={props.staff}
-                  inProgress={props.inProgressJobs}
-                  completed={props.completedJobs}
+                  workingJobs={props.workingJobs}
+                  completedJobs={props.completedJobs}
                 />
               </Paper>
             </Grid>

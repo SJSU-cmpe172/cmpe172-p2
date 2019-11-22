@@ -15,6 +15,7 @@ users.post("/register", (req, res) => {
   const today = new Date();
   const userData = {
     username: req.body.username,
+    name: req.body.name,
     password: req.body.password,
     privilege: req.body.privilege,
     created: today

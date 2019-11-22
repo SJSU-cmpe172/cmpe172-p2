@@ -1,4 +1,3 @@
-/* eslint-disable no-script-url */
 import React from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,19 +6,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import RegisterModal from './RegisterModal';
 import EmployeeModal from './EmployeeModal';
-
-const createJob = (type, date, time) => {
-  return {
-    type:type,
-    date:date,
-    time:time
-  }
-}
-
-const jobs = [
-  createJob('Housekeeping', '11/11/11', '2 Hours'),
-  createJob('Valet', '12/11/12', '3 hours')
-]
 
 export default function EmployeeList(props) {
   return (
@@ -38,12 +24,12 @@ export default function EmployeeList(props) {
         </TableHead>
         <TableBody>
           {props.staff.map(emp => (
-            <TableRow key={emp.idNum}>
-              <TableCell>{emp.idNum}</TableCell>
-              <TableCell>{emp.password}</TableCell>
+            <TableRow key={emp.username}>
+              <TableCell>{emp.username}</TableCell>
+              <TableCell>{emp.name}</TableCell>
               <TableCell>{emp.privilege}</TableCell>
               <TableCell>
-                  <EmployeeModal id={emp.id} jobs={jobs}/>
+                  <EmployeeModal id={emp.username} workingJobs={props.workingJobs} completedJobs={props.completedJobs}/>
               </TableCell>
             </TableRow>
           ))}

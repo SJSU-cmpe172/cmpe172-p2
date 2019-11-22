@@ -4,6 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import RegStaff from '../components/RegStaff';
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }

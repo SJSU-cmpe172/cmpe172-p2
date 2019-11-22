@@ -6,6 +6,7 @@ class RegStaff extends Component {
     super(props);
     this.state = {
       username: "",
+      name: "",
       password: "",
       privilege: "",
       errors: {}
@@ -23,6 +24,7 @@ class RegStaff extends Component {
     e.preventDefault();
     const newStaff = {
       username: this.state.username,
+      name: this.state.name,
       password: this.state.password,
       privilege: this.state.privilege
     };
@@ -38,24 +40,24 @@ class RegStaff extends Component {
             <form noValidate>
               <h1 className="h3 mb-3 font-weight-normal">Register Staff</h1>
               <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">ID#</label>
                 <input
                   type="text"
                   className="form-control"
                   name="username"
-                  placeholder="Enter username"
+                  placeholder="Enter ID"
                   value={this.state.username}
                   onChange={this.onChange}
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="name">Employee Name</label>
                 <input
-                  type="password"
+                  type="name"
                   className="form-control"
-                  name="password"
-                  placeholder="Enter password"
-                  value={this.state.password}
+                  name="name"
+                  placeholder="Enter Name"
+                  value={this.state.name}
                   onChange={this.onChange}
                 />
               </div>
@@ -67,6 +69,17 @@ class RegStaff extends Component {
                   name="privilege"
                   placeholder="Enter position"
                   value={this.state.privilege}
+                  onChange={this.onChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  placeholder="Enter password"
+                  value={this.state.password}
                   onChange={this.onChange}
                 />
               </div>

@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
+import { getTime, getDate, getTimeToComplete } from './Time.js';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -60,47 +61,57 @@ export default function EmployeeModal(props) {
             onClose={handleClose}
         >
             <div style={modalStyle} className={classes.paper}>
-                <h3>Jobs Completed</h3>
-                <hr/>
-                <Table size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Date</TableCell>
-                            <TableCell>Room #</TableCell>
-                            <TableCell>Time To Complete</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {props.jobs.map(job => (
+              <h3>Jobs In-Progress</h3>
+              <hr/>
+              <Table size="small">
+                  <TableHead>
+                      <TableRow>
+                          <TableCell>Date</TableCell>
+                          <TableCell>Time Started</TableCell>
+                          <TableCell>Type</TableCell>
+                          <TableCell>Room #</TableCell>
+                      </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {props.workingJobs.map(job => {
+                      if(props.id===job.staff)
+                        return (
+                          <TableRow key={props.id}>
+                              <TableCell>{getDate(job.dtCreated)}</TableCell>
+                              <TableCell>{getTime(job.dtCreated)}</TableCell>
+                              <TableCell>{job.type}</TableCell>
+                              <TableCell>{job.room}</TableCell>
+                          </TableRow>
+                        );
+                      })}
+                  </TableBody>
+              </Table>
+              <br/>
+              <h3>Jobs Completed</h3>
+              <hr/>
+              <Table size="small">
+                  <TableHead>
+                      <TableRow>
+                          <TableCell>Date</TableCell>
+                          <TableCell>Type</TableCell>
+                          <TableCell>Room #</TableCell>
+                          <TableCell>Time To Complete</TableCell>
+                      </TableRow>
+                  </TableHead>
+                  <TableBody>
+                      {props.completedJobs.map(job => {
+                        if(props.id===job.staff)
+                          return (
                             <TableRow key={props.id}>
+                                <TableCell>{getDate(job.dtCreated)}</TableCell>
                                 <TableCell>{job.type}</TableCell>
-                                <TableCell>{job.date}</TableCell>
-                                <TableCell>{job.time}</TableCell>
+                                <TableCell>{job.room}</TableCell>
+                                <TableCell>{getTimeToComplete(job.dtCreated, job.dtCompleted)}</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-                <br/>
-                <h3>Jobs In-Progress</h3>
-                <hr/>
-                <Table size="small">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Start Date</TableCell>
-                            <TableCell>Room #</TableCell>
-                            <TableCell>Time Started</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {props.jobs.map(job => (
-                            <TableRow key={props.id}>
-                                <TableCell>{job.type}</TableCell>
-                                <TableCell>{job.date}</TableCell>
-                                <TableCell>{job.time}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                          );
+                      })}
+                  </TableBody>
+              </Table> 
             </div>
         </Modal>
     </div>

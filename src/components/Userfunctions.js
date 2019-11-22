@@ -4,6 +4,7 @@ export const registerStaff = newStaff => {
   return axios
     .post("/api/users/register", {
       username: newStaff.username,
+      name: newStaff.name,
       password: newStaff.password,
       privilege: newStaff.privilege
     })

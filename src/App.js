@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.css";
 
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
-import Register from "./components/Register";
 import Profile from "./components/Profile";
 import Services from "./components/Services";
-import RegCustomer from "./components/RegCustomer";
-import RegStaff from "./components/RegStaff";
 import Amenities from "./components/Amenities";
 import Food from "./components/Food";
 import ShuttleJob from "./components/Shuttle";

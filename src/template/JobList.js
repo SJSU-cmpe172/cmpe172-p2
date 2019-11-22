@@ -11,8 +11,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { getTime, getDate, getTimeToComplete } from './Time.js';
 
-function TabPanel(props) {
+const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
   return (
@@ -35,7 +36,7 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
+const a11yProps = (index) => {
   return {
     id: `full-width-tab-${index}`,
     'aria-controls': `full-width-tabpanel-${index}`,
@@ -49,20 +50,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function FullWidthTabs() {
+const FullWidthTabs = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
-  
-  const jobs = [{id:1, type:'Housekeeping', date:'11/19/19', time:'2:00'}, {id:2, type:'Valet', date:'11/19/19', time:'2:00'},
-  {id:3, type:'Kitchen', date:'11/19/19', time:'2:00'}]
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const handleChangeIndex = index => {
-    setValue(index);
   };
 
   return (
@@ -77,7 +71,7 @@ export default function FullWidthTabs() {
                 variant="fullWidth"
                 aria-label="full width tabs example"
             >
-                <Tab label="Available" {...a11yProps(0)} />
+                <Tab label="New Jobs" {...a11yProps(0)} />
                 <Tab label="In Progress" {...a11yProps(1)} />
                 <Tab label="Completed" {...a11yProps(2)} />
             </Tabs>
@@ -86,19 +80,21 @@ export default function FullWidthTabs() {
             <Table size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Time Created</TableCell>
-                        <TableCell>Job ID</TableCell>
-                        <TableCell>Job Type</TableCell>
-                        <TableCell>Room Number</TableCell>
+                      <TableCell>Date Created</TableCell>
+                      <TableCell>Time Created</TableCell>
+                      <TableCell>Job ID</TableCell>
+                      <TableCell>Job Type</TableCell>
+                      <TableCell>Room Number</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {jobs.map(job => (
+                    {props.newJobs.map(job => (
                         <TableRow key={job.id}>
-                            <TableCell>{job.date}</TableCell>
+                            <TableCell>{getDate(job.dtCreated)}</TableCell>
+                            <TableCell>{getTime(job.dtCreated)}</TableCell>
                             <TableCell>{job.id}</TableCell>
                             <TableCell>{job.type}</TableCell>
-                            <TableCell>{job.time}</TableCell>
+                            <TableCell>{job.room}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -108,19 +104,23 @@ export default function FullWidthTabs() {
             <Table size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Time Started</TableCell>
-                        <TableCell>Job ID</TableCell>
-                        <TableCell>Job Type</TableCell>
-                        <TableCell>Room Number</TableCell>
-                        <TableCell>Employee ID</TableCell>
+                      <TableCell>Date Started</TableCell>
+                      <TableCell>Time Started</TableCell>
+                      <TableCell>Job ID</TableCell>
+                      <TableCell>Job Type</TableCell>
+                      <TableCell>Room Number</TableCell>
+                      <TableCell>Employee ID</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {jobs.map(job => (
+                    {props.workingJobs.map(job => (
                         <TableRow key={job.id}>
-                            <TableCell>{job.date}</TableCell>
+                            <TableCell>{getDate(job.dtWorked)}</TableCell>
+                            <TableCell>{getTime(job.dtWorked)}</TableCell>
+                            <TableCell>{job.id}</TableCell>
                             <TableCell>{job.type}</TableCell>
-                            <TableCell>{job.time}</TableCell>
+                            <TableCell>{job.room}</TableCell>
+                            <TableCell>{job.staff}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -130,7 +130,8 @@ export default function FullWidthTabs() {
             <Table size="small">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Time Completed</TableCell>
+                        <TableCell>Date Completed</TableCell>
+                        <TableCell>Completion Time</TableCell>
                         <TableCell>Job ID</TableCell>
                         <TableCell>Job Type</TableCell>
                         <TableCell>Room Number</TableCell>
@@ -138,11 +139,14 @@ export default function FullWidthTabs() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {jobs.map(job => (
+                    {props.completedJobs.map(job => (
                         <TableRow key={job.id}>
-                            <TableCell>{job.date}</TableCell>
+                            <TableCell>{getDate(job.dtCompleted)}</TableCell>
+                            <TableCell>{getTimeToComplete(job.dtWorked, job.dtCompleted)}</TableCell>
+                            <TableCell>{job.id}</TableCell>
                             <TableCell>{job.type}</TableCell>
-                            <TableCell>{job.time}</TableCell>
+                            <TableCell>{job.room}</TableCell>
+                            <TableCell>{job.staff}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
@@ -151,3 +155,5 @@ export default function FullWidthTabs() {
     </div>
   );
 }
+
+export default FullWidthTabs;

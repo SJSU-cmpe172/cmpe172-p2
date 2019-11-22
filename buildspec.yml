@@ -9,7 +9,7 @@ phases:
       - npm install
       - npm run build
       # Upgrade AWS CLI to the latest version
-      - pip3 install --upgrade awscli
+      # - pip3 install --upgrade awscli
   post_build:
     commands:
       # Do not remove this statement. This command is required for AWS CodeStar projects.

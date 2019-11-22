@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { login } from "./Userfunctions";
 import { loginStaff } from "./Userfunctions";
 
 class Login extends Component {
@@ -12,10 +13,24 @@ class Login extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleLogin(e) {
+    e.preventDefault();
+    const staff = {
+      username: this.state.username,
+      password: this.state.password
+    };
+    loginStaff(staff).then(res => {
+      if (res) {
+        this.props.history.push("/profile");
+      }
+    });
   }
 
   onSubmit(e) {
@@ -24,10 +39,9 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    console.log(user);
-    loginStaff(user).then(res => {
+    login(user).then(res => {
+      console.log(res);
       if (res) {
-        console.log(res);
         this.props.history.push("/profile");
       }
     });
@@ -66,7 +80,13 @@ class Login extends Component {
                 type="submit"
                 className="btn btn-lg btn-primary btn-block"
               >
-                Sign in
+                Sign in USER
+              </button>
+              <button
+                onClick={this.handleLogin}
+                className="btn btn-lg btn-secondary btn-block"
+              >
+                Sign in STAFF
               </button>
             </form>
           </div>

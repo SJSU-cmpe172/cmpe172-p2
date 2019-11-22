@@ -14,7 +14,6 @@ import ShuttleJob from "./components/Shuttle";
 import ValetJob from "./components/Valet";
 import StaffJobs from "./components/StaffJobs";
 import AdminPage from "./components/AdminPage";
-import StaffJobs from "./components/StaffJobs";
 
 class App extends Component {
   render() {
@@ -33,7 +32,6 @@ class App extends Component {
             <Route exact path="/valet" component={ValetJob} />
             <Route exact path="/staffJobs" component={StaffJobs} />
             <Route exact path="/admin" component={AdminPage} />
-            <Route exact path="/staffJobs" component={StaffJobs} />
           </div>
         </div>
       </Router>

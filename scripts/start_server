@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /home/ec2-user/node-website
+forever start -c "serve" -s build -p 80
+forever start -c "node" src/server/server.js

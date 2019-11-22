@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "stoped server"
+forever stopall

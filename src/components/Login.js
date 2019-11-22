@@ -28,7 +28,7 @@ class Login extends Component {
     };
     loginStaff(staff).then(res => {
       if (res) {
-        this.props.history.push("/profile");
+        this.props.history.push("/staffJobs");
       }
     });
   }

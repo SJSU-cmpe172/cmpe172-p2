@@ -12,7 +12,11 @@ import Amenities from "./components/Amenities";
 import Food from "./components/Food";
 import ShuttleJob from "./components/Shuttle";
 import ValetJob from "./components/Valet";
+<<<<<<< HEAD
 import AdminPage from "./components/AdminPage";
+=======
+import StaffJobs from "./components/StaffJobs";
+>>>>>>> fixed login
 
 class App extends Component {
   render() {
@@ -29,7 +33,11 @@ class App extends Component {
             <Route exact path="/food" component={Food} />
             <Route exact path="/shuttle" component={ShuttleJob} />
             <Route exact path="/valet" component={ValetJob} />
+<<<<<<< HEAD
             <Route exact path="/admin" component={AdminPage} />
+=======
+            <Route exact path="/staffJobs" component={StaffJobs} />
+>>>>>>> fixed login
           </div>
         </div>
       </Router>

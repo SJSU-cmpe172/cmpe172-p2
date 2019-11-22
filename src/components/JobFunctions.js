@@ -2,7 +2,8 @@ import axios from "axios";
 
 export const getJobs = () => {
   return axios.get("/api/jobs/getJobs").then(res => {
-    return res.data.Items;
+    console.log(res.data.Items.jobs);
+    return res.data.Items.jobs;
   });
 };
 

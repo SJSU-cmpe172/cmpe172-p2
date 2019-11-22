@@ -25,9 +25,9 @@ class AdminPage extends Component {
     //Get list of all jobs (New, Working, Completed)
     await getJobs().then(res => {
       console.log(res);
-      let newJob = res[0].filter(job => job.status === "new");
-      let workingJob = res[0].filter(job => job.status === "working");
-      let completedJob = res[0].filter(job => job.status === "completed");
+      let newJob = res.filter(job => job.status === "new");
+      let workingJob = res.filter(job => job.status === "working");
+      let completedJob = res.filter(job => job.status === "completed");
 
       this.setState({
         newJobs: newJob,

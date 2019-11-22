@@ -1,20 +1,9 @@
 import axios from "axios";
 
 export const getJobs = () => {
-<<<<<<< HEAD
   return axios.get("/api/jobs/getJobs").then(res => {
-    return res.data.Item.jobs;
+    return res.data.Items;
   });
-=======
-  return axios
-    .get("/api/jobs/getJobs")
-    .then(res => {
-      return res.data.Item.jobs;
-    })
-    .catch(err => {
-      console.log(err);
-    });
->>>>>>> fixed login
 };
 
 export const getNewJobs = () => {

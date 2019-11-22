@@ -32,7 +32,7 @@ class Landing extends Component {
     } else if (localStorage.usertoken) {
       let token = localStorage.usertoken;
       let decode = jwt_decode(token);
-      if (decode.privilege) {
+      if (decode.privilege && decode.privilege != "admin") {
         return (
           <ul className="navbar-nav">
             <li className="nav-item">
@@ -43,6 +43,21 @@ class Landing extends Component {
             <li className="nav-item">
               <Link to="/profile" className="nav-link">
                 Profile
+              </Link>
+            </li>
+            <li className="nav-item">
+              <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+                Logout
+              </a>
+            </li>
+          </ul>
+        );
+      } else if (decode.privilege === "admin") {
+        return (
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link to="/admin" className="nav-link">
+                Admin
               </Link>
             </li>
             <li className="nav-item">

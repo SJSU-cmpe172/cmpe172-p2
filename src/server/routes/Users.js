@@ -87,7 +87,7 @@ users.post("/register", (req, res) => {
 
 users.post("/login", (req, res) => {
   let params = {};
-  params.TableName = "hotel_test";
+  params.TableName = "hotel";
   params.Key = { hotelid: 1 };
   params.ProjectionExpression = "rooms";
 

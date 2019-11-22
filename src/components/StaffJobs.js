@@ -22,12 +22,13 @@ class StaffJobs extends Component {
 
     let newJobs;
     await getNewJobs().then(res => {
-      newJobs = res;
+      newJobs = res.data;
     });
 
     let myJobs;
     await getMyJobs(decoded.username).then(res => {
-      myJobs = res;
+      myJobs = res.data;
+      console.log(myJobs);
     });
     this.setState({
       staffId: decoded.staffId,
@@ -35,20 +36,31 @@ class StaffJobs extends Component {
       newJobs: newJobs,
       staffJobs: myJobs
     });
+    console.log(this.state);
   }
 
   render() {
     return (
       <SplitPane defaultSize="50%">
         <div className="container">
-          <ul>
-            {this.state.newJobs.map((job, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
+          <h3>new jobs</h3>
+          {
+            <ul>
+              {this.state.newJobs.map((job, i) => (
+                <li key={i}>{job}</li>
+              ))}
+            </ul>
+          }
         </div>
         <div className="container">
-          <RegCustomer subCust={this.onSubmitCustomer} />
+          <h3>my jobs</h3>
+          {
+            <ul>
+              {this.state.staffJobs.map((job, i) => (
+                <li key={i}>{job}</li>
+              ))}
+            </ul>
+          }
         </div>
       </SplitPane>
     );

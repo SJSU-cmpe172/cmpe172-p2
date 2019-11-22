@@ -22,7 +22,6 @@ artifacts:
     - package.json
     - appspec.yml
     - scripts/*
-    - node_modules/**/*
     - src/**/*
     - build/**/*
     - template-configuration.json

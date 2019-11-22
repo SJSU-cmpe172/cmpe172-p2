@@ -31,9 +31,8 @@ users.post("/register", (req, res) => {
         res.send("user already exists");
       }
     }
-    bcrypt.hash(req.body.password, 10, (err, hash) => {
-      userData.password = hash;
-    });
+    hash = bcrypt.hashSync(req.body.password, 10);
+    userData.password = hash;
 
     let params2 = {};
     params2.TableName = "hotel";

@@ -11,7 +11,7 @@ import {
   IconButton, Typography
 } from '@material-ui/core';
 import { 
-  FavoriteIcon, ShoppingCart, Delete, Close
+  ShoppingCart, Delete, Close
 } from '@material-ui/icons'; 
 import { createJob } from './JobFunctions';
 

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SplitPane from "react-split-pane";
 import jwt_decode from "jwt-decode";
+import ioClient from "socket.io-client";
 
 import { getMyJobs } from "./JobFunctions";
 import { getNewJobs } from "./JobFunctions";
@@ -9,6 +10,7 @@ class StaffJobs extends Component {
   constructor() {
     super();
     this.state = {
+      endpoint: "http://localhost:5000",
       newJobs: [],
       staffJobs: [],
       staffId: "",
@@ -17,6 +19,15 @@ class StaffJobs extends Component {
   }
 
   async componentDidMount() {
+    // const { endpoint } = this.state;
+    // const socket = ioClient(endpoint);
+    // socket.on("FromServer", data => {
+    //   console.log("got new data: " + data);
+    //   this.setState({
+    //     newJobs: data
+    //   });
+    // });
+
     const token = localStorage.usertoken;
     const decoded = jwt_decode(token);
 
@@ -44,23 +55,23 @@ class StaffJobs extends Component {
       <SplitPane defaultSize="50%">
         <div className="container">
           <h3>new jobs</h3>
-          {
+          {/* {
             <ul>
               {this.state.newJobs.map((job, i) => (
                 <li key={i}>{job}</li>
               ))}
             </ul>
-          }
+          } */}
         </div>
         <div className="container">
           <h3>my jobs</h3>
-          {
+          {/* {
             <ul>
-              {this.state.staffJobs.map((job, i) => (
+              {this.state.staffJobs.map((job) => (
                 <li key={i}>{job}</li>
               ))}
             </ul>
-          }
+          } */}
         </div>
       </SplitPane>
     );

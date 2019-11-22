@@ -32,11 +32,13 @@ class Landing extends Component {
     } else if (localStorage.usertoken) {
       let token = localStorage.usertoken;
       let decode = jwt_decode(token);
-      if (decode.privilege === "hospitality") {
+      if (decode.privilege) {
         return (
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to="/profile" className="nav-link"></Link>
+              <Link to="/staffJobs" className="nav-link">
+                See Jobs
+              </Link>
             </li>
             <li className="nav-item">
               <Link to="/profile" className="nav-link">

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getJobs = () => {
-  axios.get("/api/jobs/getJobs").then(res => {
+  return axios.get("/api/jobs/getJobs").then(res => {
     return res.data.Item.jobs;
   });
 };

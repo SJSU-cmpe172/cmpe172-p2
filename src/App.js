@@ -6,15 +6,13 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import Login from "./components/Login";
-import Register from "./components/Register";
 import Profile from "./components/Profile";
 import Services from "./components/Services";
-import RegCustomer from "./components/RegCustomer";
-import RegStaff from "./components/RegStaff";
 import Amenities from "./components/Amenities";
 import Food from "./components/Food";
 import ShuttleJob from "./components/Shuttle";
 import ValetJob from "./components/Valet";
+import AdminPage from "./components/AdminPage";
 
 class App extends Component {
   render() {
@@ -31,6 +29,7 @@ class App extends Component {
             <Route exact path="/food" component={Food} />
             <Route exact path="/shuttle" component={ShuttleJob} />
             <Route exact path="/valet" component={ValetJob} />
+            <Route exact path="/admin" component={AdminPage} />
           </div>
         </div>
       </Router>

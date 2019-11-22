@@ -2,8 +2,44 @@ import axios from "axios";
 
 export const getJobs = () => {
   return axios.get("/api/jobs/getJobs").then(res => {
-    return res.data.Item.jobs;
+    console.log(res.data.Items.jobs);
+    return res.data.Items.jobs;
   });
+};
+
+export const getNewJobs = () => {
+  return axios
+    .get("api/jobs/getNewJobs")
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const getMyJobs = staffName => {
+  return axios
+    .get("api/jobs/getMyJobs", {
+      params: { staff: staffName }
+    })
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const workJob = (jobId, staffName) => {
+  axios
+    .post("api/jobs/workJob", { jobId: jobId, staff: staffName })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const createJob = jobObj => {

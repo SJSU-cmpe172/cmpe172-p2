@@ -17,16 +17,35 @@ export const registerStaff = newStaff => {
     });
 };
 
-export const loginStaff = staff => {
+export const login = user => {
   return axios
     .post("/api/users/login", {
-      username: staff.username,
+      username: user.username,
+      password: user.password
+    })
+    .then(response => {
+      if (response) {
+        localStorage.setItem("usertoken", response.data);
+        return response.data;
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const loginStaff = staff => {
+  console.log(staff);
+  return axios
+    .post("/api/users/staffLogin", {
+      staffId: staff.username,
       password: staff.password
     })
     .then(response => {
-      localStorage.setItem("usertoken", response.data);
-      console.log('SUCCESS');
-      return response.data;
+      if (response) {
+        localStorage.setItem("usertoken", response.data);
+        return response.data;
+      }
     })
     .catch(err => {
       console.log(err);

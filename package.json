@@ -35,7 +35,7 @@
     "server": "cd src/server && nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm start\""
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "http://18.144.29.52:5000",
   "eslintConfig": {
     "extends": "react-app"
   },

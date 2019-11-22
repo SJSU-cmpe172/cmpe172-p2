@@ -21,11 +21,13 @@ app.use("/api/jobs", Jobs);
 app.use("/api/food", Food);
 app.use("/api/destinations", Destinations);
 
+app.options('*', cors('http://bookiebeater.net'))
+
 app.use((req, res) => {
   res.status(404).send("Unknown Request");
 });
 
-const port = 5000;
+const port = 80;
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

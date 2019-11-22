@@ -9,16 +9,15 @@ import {
   IconButton, Typography
 } from '@material-ui/core';
 import { Add, Done } from '@material-ui/icons'; 
-
+import ioClient from "socket.io-client";
 import { getMyJobs, getNewJobs, workJob, completeJob } from "./JobFunctions";
 
 class StaffJobs extends Component {
   constructor() {
     super();
     this.state = {
-      newJobs: [
-        { jobId: 123, dtCreated: Date.now(), type: 'kitchen' }
-      ],
+      endpoint: "http://localhost:5000",
+      newJobs: [],
       staffJobs: [],
       staffId: "",
       privilege: ""
@@ -26,6 +25,15 @@ class StaffJobs extends Component {
   }
 
   async componentDidMount() {
+    // const { endpoint } = this.state;
+    // const socket = ioClient(endpoint);
+    // socket.on("FromServer", data => {
+    //   console.log("got new data: " + data);
+    //   this.setState({
+    //     newJobs: data
+    //   });
+    // });
+
     const token = localStorage.usertoken;
     const decoded = jwt_decode(token);
 

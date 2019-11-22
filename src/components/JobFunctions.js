@@ -57,7 +57,6 @@ export const completeJob = (jobId) => {
     });
 };
 
-
 export const createJob = jobObj => {
   const jobId = Date.now();
   const tempObj = {

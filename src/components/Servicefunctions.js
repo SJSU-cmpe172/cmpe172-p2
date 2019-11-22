@@ -33,6 +33,8 @@ export const createAmenityJob = itemList => {
   newJob.room = decoded.roomNum;
   newJob.type = "amenities";
   newJob.status = "new";
+  newJob.items = itemList;
+  createJob(newJob);
   //newJob.dtCreated =
 
   /*

@@ -30,12 +30,12 @@ class StaffJobs extends Component {
 
     let newJobs;
     await getNewJobs().then(res => {
-      newJobs = res;
+      newJobs = res.data;
     });
 
     let myJobs;
     await getMyJobs(decoded.username).then(res => {
-      myJobs = res;
+      myJobs = res.data;
     });
     this.setState({
       staffId: decoded.staffId,

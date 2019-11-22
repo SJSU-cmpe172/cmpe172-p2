@@ -36,6 +36,7 @@ class StaffJobs extends Component {
     let myJobs;
     await getMyJobs(decoded.username).then(res => {
       myJobs = res.data;
+      console.log(myJobs);
     });
     this.setState({
       staffId: decoded.staffId,
@@ -43,6 +44,7 @@ class StaffJobs extends Component {
       newJobs: newJobs,
       staffJobs: myJobs
     });
+    console.log(this.state);
   }
   setWorking() {
     console.log('setWorking')

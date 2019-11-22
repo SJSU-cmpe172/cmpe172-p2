@@ -26,11 +26,14 @@ users.post("/register", (req, res) => {
       console.log(err);
     }
     buffer = data.Item.staff;
+    //console.log("sent pw: " + req.body.password);
+    //console.log(data.Item.staff);
     for (let i = 0; i < buffer.length; i++) {
       if (buffer[i].idNum === userData.idNum) {
         res.send("user already exists");
       }
     }
+    console.log("outside: " + userData.idNum);
     hash = bcrypt.hashSync(req.body.password, 10);
     userData.password = hash;
 
@@ -112,6 +115,21 @@ users.post("/login", (req, res) => {
           break;
         }
       }
+    }
+  });
+});
+
+users.post("/testStaff", (req, res) => {
+  let params = {};
+  params.TableName = "hotel";
+  params.Key = { hotelid: 1 };
+  params.ProjectionExpression = "staff";
+
+  docClient.get(params, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(data.Item.staff);
     }
   });
 });

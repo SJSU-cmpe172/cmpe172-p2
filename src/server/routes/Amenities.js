@@ -11,7 +11,7 @@ amenities.use(cors());
 amenities.get("/getItems", (req, res) => {
   //const docClient = new AWS.DynamoDB.DocumentClient();
   let params = {};
-  params.TableName = "hotel";
+  params.TableName = "hotel_test";
   params.Key = { hotelid: 1 };
   params.ProjectionExpression = "amenities";
 

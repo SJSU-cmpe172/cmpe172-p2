@@ -1,0 +1,6 @@
+#!/bin/bash
+cd /home/ec2-user/node-website
+aws s3 cp s3://configsbellboy/config.js .
+mv config.js src/server/config.js
+forever start -c "serve" -s build -p 80
+forever start -c "node" src/server/server.js

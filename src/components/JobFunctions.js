@@ -1,10 +1,14 @@
 import axios from "axios";
 
 export const getJobs = () => {
-  return axios.get("/api/jobs/getJobs").then(res => {
-    console.log(res.data.Items.jobs);
-    return res.data.Items.jobs;
-  });
+  return axios
+    .get("/api/jobs/getJobs")
+    .then(res => {
+      return res.data.Item.jobs;
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const getNewJobs = () => {
@@ -34,6 +38,17 @@ export const getMyJobs = staffName => {
 export const workJob = (jobId, staffName) => {
   axios
     .post("api/jobs/workJob", { jobId: jobId, staff: staffName })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const completeJob = (jobId) => {
+  axios
+    .post("api/jobs/completeJob", { jobId: jobId })
     .then(response => {
       console.log(response);
     })

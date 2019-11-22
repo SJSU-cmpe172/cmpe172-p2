@@ -8,7 +8,6 @@
     "autosuggest-highlight": "^3.1.1",
     "aws-sdk": "^2.562.0",
     "axios": "^0.19.0",
-    "bcrypt": "^3.0.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^4.1.2",
@@ -35,7 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "cd src\\server && nodemon server.js",
+    "server": "cd src/server && nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm start\""
   },
   "proxy": "http://localhost:5000",

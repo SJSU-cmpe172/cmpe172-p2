@@ -8,15 +8,12 @@ import {
   Container, Grid,
   List, ListItem, Divider,
   Snackbar,
-  Avatar, IconButton, Typography
+  IconButton, Typography
 } from '@material-ui/core';
 import { 
-  FavoriteIcon, ShoppingCart, Delete, Close
+  ShoppingCart, Delete, Close
 } from '@material-ui/icons'; 
 import { createJob } from './JobFunctions';
-const axios = require('axios');
-
-const deft_img = "https://i.imgur.com/DOTJi6h.jpg";
 
 const HOST = 'http://localhost:5000/api/food/'
 async function post (addr, data) {
@@ -74,10 +71,11 @@ class Food extends Component {
     setTimeout( ()=>{
       if (!this.state.cancel) {
         const id = Date.now();
+        const room = new String(this.state.room);
         createJob({
           id:                id,
-          room: this.state.room,
-          type:          "food",
+          room:            room,
+          type:       "kitchen",
           //job specific
           items: this.state.menu.filter( (f) => { if (f.count>0) return { foodID: f.name, count: f.count }} ),
         });

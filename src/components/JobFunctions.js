@@ -46,6 +46,18 @@ export const workJob = (jobId, staffName) => {
     });
 };
 
+export const completeJob = (jobId) => {
+  axios
+    .post("api/jobs/completeJob", { jobId: jobId })
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+
 export const createJob = jobObj => {
   const jobId = Date.now();
   const tempObj = {

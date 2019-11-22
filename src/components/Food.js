@@ -71,10 +71,11 @@ class Food extends Component {
     setTimeout( ()=>{
       if (!this.state.cancel) {
         const id = Date.now();
+        const room = new String(this.state.room);
         createJob({
           id:                id,
-          room: this.state.room,
-          type:          "food",
+          room:            room,
+          type:       "kitchen",
           //job specific
           items: this.state.menu.filter( (f) => { if (f.count>0) return { foodID: f.name, count: f.count }} ),
         });

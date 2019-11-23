@@ -16,14 +16,14 @@ Students:
 Bellboy is a web based app that provides hotel management a platform to serve in room requests from guests and track employee metrics on serving these requests, all in real time.
 
 ## Sample Demo Screenshots
-![Landing Page]https://drive.google.com/open?id=1asgBWMkEB78OsFCk9VhkITdT-S5NTWFW
-![Sign In]https://drive.google.com/open?id=1xbH9WGlyV6pHYlbpXrV9dr95Pce-T4JA
-![Valet Request]https://drive.google.com/open?id=1u98Gj4JiBDc2rISuPEbgGE1nyikdQljO
-![Shuttle Request]https://drive.google.com/open?id=1cOrtpRGIufkFZma7WBrNJhlxv0IWuPZf
-![Amenity Services]https://drive.google.com/open?id=13Vnv6Mxb4zGssVIuU4TZaemEwKc9_3R2
-![Food Services]https://drive.google.com/open?id=1sOpuXFTCfOpdNfm4jDb7Lyg_10QVhpHp
-![Staff Jobs]https://drive.google.com/open?id=1x79kRAnulUNLrfxuQvQ7gylcdvPWIYZ5
-![Admin]https://drive.google.com/open?id=1rh9TWUUfc5o6us-Fji2nGeN4k1BM-Tn2
+![Landing Page](https://drive.google.com/open?id=1asgBWMkEB78OsFCk9VhkITdT-S5NTWFW)
+![Sign In](https://drive.google.com/open?id=1xbH9WGlyV6pHYlbpXrV9dr95Pce-T4JA)
+![Valet Request](https://drive.google.com/open?id=1u98Gj4JiBDc2rISuPEbgGE1nyikdQljO)
+![Shuttle Request](https://drive.google.com/open?id=1cOrtpRGIufkFZma7WBrNJhlxv0IWuPZf)
+![Amenity Services](https://drive.google.com/open?id=13Vnv6Mxb4zGssVIuU4TZaemEwKc9_3R2)
+![Food Services](https://drive.google.com/open?id=1sOpuXFTCfOpdNfm4jDb7Lyg_10QVhpHp)
+![Staff Jobs](https://drive.google.com/open?id=1x79kRAnulUNLrfxuQvQ7gylcdvPWIYZ5)
+![Admin](https://drive.google.com/open?id=1rh9TWUUfc5o6us-Fji2nGeN4k1BM-Tn2)
 
 
 ## Pre-requisites Set Up

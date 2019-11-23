@@ -24,7 +24,7 @@ Bellboy is a web based app that provides hotel management a platform to serve in
 
 ![Shuttle Request](https://d2esuicr46htyx.cloudfront.net/screenshots/Shuttle+Request.PNG)
 
-![Amenity Services](https://d2esuicr46htyx.cloudfront.net/screenshots/Amenity+Services.PNG)
+![Amenity Services](https://d2esuicr46htyx.cloudfront.net/screenshots/Amenity+Service.PNG)
 
 ![Food Services](https://d2esuicr46htyx.cloudfront.net/screenshots/Food+Services.PNG)
 

@@ -7,8 +7,8 @@ Course: [Enterprise Software](http://info.sjsu.edu/web-dbgen/catalog/courses/CMP
 Professor [Sanjay Garje](https://www.linkedin.com/in/sanjaygarje/)
 
 Students:
-- [Quang Ngo]
-- [Volodymyr Makarenko]
+- [Quang Ngo](https://www.linkedin.com/in/lance-ngo-a1892a5/)
+- [Volodymyr Makarenko](https://www.linkedin.com/in/volodymyr-makarenko-0294ab135/)
 - [Christian Castro](https://www.linkedin.com/in/ccastro3/)
 - [Aldrich Mangune](https://www.linkedin.com/in/aldrich-mangune/)
 
@@ -16,7 +16,7 @@ Students:
 Bellboy is a web based app that provides hotel management a platform to serve in room requests from guests and track employee metrics on serving these requests, all in real time.
 
 ## Sample Demo Screenshots
-![Landing Page](https://d2esuicr46htyx.cloudfront.net/screenshots/Admin+Page.PNG)
+![Landing Page](https://d2esuicr46htyx.cloudfront.net/screenshots/Landing+Page.PNG)
 
 ![Sign In](https://d2esuicr46htyx.cloudfront.net/screenshots/Sign+In.PNG)
 
@@ -30,11 +30,20 @@ Bellboy is a web based app that provides hotel management a platform to serve in
 
 ![Staff Job](https://d2esuicr46htyx.cloudfront.net/screenshots/Staff+Job.PNG)
 
-![Admin](https://d2esuicr46htyx.cloudfront.net/screenshots/Admin.PNG)
+![Admin](https://d2esuicr46htyx.cloudfront.net/screenshots/Admin+Page.PNG)
 
 ## Pre-requisites Set Up
-Here include bullet point list of resources one need to configure in their cloud account. (E.g. For AWS: S3 buckets, CloudFront etc)
-List of required software to download locally (E.g. Spring, JDK, Eclipse IDE etc. )
+AWS:
+- Route 53
+- EC2
+- DynamoDB
+- S3 Buckets
+- CloudFront
+
+Locally:
+- Node
+- React
+- AWS CLI
 
 ## Local configuration
 How to set up and run project locally?

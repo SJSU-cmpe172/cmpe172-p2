@@ -16,21 +16,21 @@ Students:
 Bellboy is a web based app that provides hotel management a platform to serve in room requests from guests and track employee metrics on serving these requests, all in real time.
 
 ## Sample Demo Screenshots
-![Landing Page](d2esuicr46htyx.cloudfront.net/screenshots/Admin+Page.PNG)
+![Landing Page](https://d2esuicr46htyx.cloudfront.net/screenshots/Admin+Page.PNG)
 
-![Sign In](d2esuicr46htyx.cloudfront.net/screenshots/Sign+In.PNG)
+![Sign In](https://d2esuicr46htyx.cloudfront.net/screenshots/Sign+In.PNG)
 
-![Valet Request](d2esuicr46htyx.cloudfront.net/screenshots/Valet+Request.PNG)
+![Valet Request](https://d2esuicr46htyx.cloudfront.net/screenshots/Valet+Request.PNG)
 
-![Shuttle Request](d2esuicr46htyx.cloudfront.net/screenshots/Shuttle+Request.PNG)
+![Shuttle Request](https://d2esuicr46htyx.cloudfront.net/screenshots/Shuttle+Request.PNG)
 
-![Amenity Services](d2esuicr46htyx.cloudfront.net/screenshots/Amenity+Services.PNG)
+![Amenity Services](https://d2esuicr46htyx.cloudfront.net/screenshots/Amenity+Services.PNG)
 
-![Food Services](d2esuicr46htyx.cloudfront.net/screenshots/Food+Services.PNG)
+![Food Services](https://d2esuicr46htyx.cloudfront.net/screenshots/Food+Services.PNG)
 
-![Staff Job](d2esuicr46htyx.cloudfront.net/screenshots/Staff+Job.PNG)
+![Staff Job](https://d2esuicr46htyx.cloudfront.net/screenshots/Staff+Job.PNG)
 
-![Admin](d2esuicr46htyx.cloudfront.net/screenshots/Admin.PNG)
+![Admin](https://d2esuicr46htyx.cloudfront.net/screenshots/Admin.PNG)
 
 ## Pre-requisites Set Up
 Here include bullet point list of resources one need to configure in their cloud account. (E.g. For AWS: S3 buckets, CloudFront etc)

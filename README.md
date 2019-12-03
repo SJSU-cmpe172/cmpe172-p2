@@ -16,21 +16,20 @@ Students:
 Bellboy is a web based app that provides hotel management a platform to serve in room requests from guests and track employee metrics on serving these requests, all in real time.
 
 ## Sample Demo Screenshots
-![Landing Page](https://d2esuicr46htyx.cloudfront.net/screenshots/Landing+Page.PNG)
 
-![Sign In](https://d2esuicr46htyx.cloudfront.net/screenshots/Sign+In.PNG)
+![Sign In](https://i.imgur.com/WCyw0nf.png)
 
-![Valet Request](https://d2esuicr46htyx.cloudfront.net/screenshots/Valet+Request.PNG)
+![Valet Request](https://i.imgur.com/jvAXFEm.png)
 
-![Shuttle Request](https://d2esuicr46htyx.cloudfront.net/screenshots/Shuttle+Request.PNG)
+![Shuttle Request](https://imgur.com/pmluf2t.png)
 
-![Amenity Services](https://d2esuicr46htyx.cloudfront.net/screenshots/Amenity+Service.PNG)
+![Amenity Services](https://imgur.com/wCXZa3O.png)
 
-![Food Services](https://d2esuicr46htyx.cloudfront.net/screenshots/Food+Services.PNG)
+![Food Services](https://imgur.com/lPoONAW.png)
 
-![Staff Job](https://d2esuicr46htyx.cloudfront.net/screenshots/Staff+Job.PNG)
+![Staff Job](https://imgur.com/blTpqXc.png)
 
-![Admin](https://d2esuicr46htyx.cloudfront.net/screenshots/Admin+Page.PNG)
+![Admin](https://imgur.com/ueH55lH.png)
 
 ## Pre-requisites Set Up
 AWS:
